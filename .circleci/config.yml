@@ -16,8 +16,24 @@ jobs:
           name: Shellcheck
           command: ./deploy-scripts/shellcheck.sh
           when: always
+    deploy-production:
+      docker:
+        - image: continuum/miniconda3:latest
+      steps:
+        - checkout
+        - attach_workspace:
+            at: ~/project
+        - run:
+            command: deploy-scripts/deploy.sh lambda-ew1-p-demo-api
 workflows:
   version: 2.1
   build-containerise-deploy:
     jobs:
       - build-and-test
+      - deploy-production:
+          requires:
+            - build-and-test
+          filters:
+            branches:
+              only:
+                - master
