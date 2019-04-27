@@ -9,7 +9,7 @@ conda update conda
 
 echo building environment
 conda env update --name root -f environment.yml
-apt-get install zip
+apt-get -y install zip
 
 # Install linters globally
 apt-get install shellcheck
