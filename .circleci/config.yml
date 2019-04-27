@@ -18,7 +18,7 @@ jobs:
           when: always
   deploy-production:
     docker:
-      - image: continuum/miniconda3:latest
+      - image: continuumio/miniconda3:latest
     steps:
       - checkout
       - attach_workspace:
