@@ -3,6 +3,7 @@
 set -xe
 
 echo "about to try and deploy"
+apt-get update
 apt-get -y install zip
 
 ls
