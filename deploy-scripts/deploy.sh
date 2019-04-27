@@ -3,6 +3,7 @@
 set -xe
 
 echo "about to try and deploy"
+apt-get -y install zip
 
 ls
 cd src
