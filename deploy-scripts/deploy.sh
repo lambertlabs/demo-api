@@ -6,7 +6,7 @@ echo "about to try and deploy"
 apt-get update
 apt-get -y install zip
 pip install --upgrade pip
-pip install 'awsebcli==3.14.11'
+pip install awscli
 
 cd src
 zip target.zip -- *.py
