@@ -5,10 +5,10 @@ set -xe
 echo "about to try and deploy"
 apt-get update
 apt-get -y install zip
+pip install --upgrade pip
+pip install 'awsebcli==3.14.11'
 
-ls
 cd src
-ls
 zip target.zip -- *.py
 ls
 aws lambda update-function-code --function-name "$1" --zip-file fileb://target.zip
