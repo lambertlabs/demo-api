@@ -1,0 +1,23 @@
+version: 2.1
+jobs:
+  build-and-test:
+    docker:
+      - image: continuumio/miniconda3:latest
+    steps:
+      - checkout
+      - run:
+          name: Build project
+          command: deploy-scripts/build-env.sh
+      - run:
+          name: Python linting
+          command: flake8
+          when: always
+      - run:
+          name: Shellcheck
+          command: ./deploy-scripts/shellcheck.sh
+          when: always
+workflows:
+  version: 2.1
+  build-containerise-deploy:
+    jobs:
+      - build-and-test
